@@ -3291,13 +3291,14 @@ function Library:CreateWindow(...)
             return Tab:AddGroupbox({ Side = 1; Name = Name; });
         end;
 
-        function Tab:AddMiddleGroupbox(Name)
+        function Tab:AddRightGroupbox(Name)
             return Tab:AddGroupbox({ Side = 2; Name = Name; });
         end;
 
-        function Tab:AddRightGroupbox(Name)
+        function Tab:AddMiddleGroupbox(Name)
             return Tab:AddGroupbox({ Side = 3; Name = Name; });
         end;
+
 
         function Tab:AddTabbox(Info)
             local Tabbox = {
@@ -3494,11 +3495,11 @@ function Library:CreateWindow(...)
             return Tab:AddTabbox({ Name = Name, Side = 1; });
         end;
 
-        function Tab:AddMiddleTabbox(Name)
+        function Tab:AddRightTabbox(Name)
             return Tab:AddTabbox({ Name = Name, Side = 2; });
         end;
 
-        function Tab:AddRightTabbox(Name)
+        function Tab:AddMiddleTabbox(Name)
             return Tab:AddTabbox({ Name = Name, Side = 3; });
         end;
 
