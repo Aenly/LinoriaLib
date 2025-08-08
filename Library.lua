@@ -3117,27 +3117,40 @@ function Library:CreateWindow(...)
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
             Position = UDim2.new(0, 8 - 1, 0, 8 - 1);
-            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            Size = UDim2.new(0.333, -12 + 2, 0, 507 + 2);
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
             ScrollBarThickness = 0;
             ZIndex = 2;
             Parent = TabFrame;
-        });
+});
+
+        local MiddleSide = Library:Create('ScrollingFrame', {
+            BackgroundTransparency = 1;
+            BorderSizePixel = 0;
+            Position = UDim2.new(0.333, 4 + 1, 0, 8 - 1);
+            Size = UDim2.new(0.333, -12 + 2, 0, 507 + 2);
+            CanvasSize = UDim2.new(0, 0, 0, 0);
+            BottomImage = '';
+            TopImage = '';
+            ScrollBarThickness = 0;
+            ZIndex = 2;
+            Parent = TabFrame;
+});
 
         local RightSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0.5, 4 + 1, 0, 8 - 1);
-            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            Position = UDim2.new(0.666, 4 + 1, 0, 8 - 1);
+            Size = UDim2.new(0.333, -12 + 2, 0, 507 + 2);
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
             ScrollBarThickness = 0;
             ZIndex = 2;
             Parent = TabFrame;
-        });
+});
 
         Library:Create('UIListLayout', {
             Padding = UDim.new(0, 8);
@@ -3193,8 +3206,8 @@ function Library:CreateWindow(...)
                 BorderMode = Enum.BorderMode.Inset;
                 Size = UDim2.new(1, 0, 0, 507 + 2);
                 ZIndex = 2;
-                Parent = Info.Side == 1 and LeftSide or RightSide;
-            });
+                Parent = Info.Side == 1 and LeftSide or (Info.Side == 2 and RightSide or MiddleSide);
+});
 
             Library:AddToRegistry(BoxOuter, {
                 BackgroundColor3 = 'BackgroundColor';
@@ -3278,8 +3291,12 @@ function Library:CreateWindow(...)
             return Tab:AddGroupbox({ Side = 1; Name = Name; });
         end;
 
-        function Tab:AddRightGroupbox(Name)
+        function Tab:AddMiddleGroupbox(Name)
             return Tab:AddGroupbox({ Side = 2; Name = Name; });
+        end;
+
+        function Tab:AddRightGroupbox(Name)
+            return Tab:AddGroupbox({ Side = 3; Name = Name; });
         end;
 
         function Tab:AddTabbox(Info)
@@ -3293,8 +3310,8 @@ function Library:CreateWindow(...)
                 BorderMode = Enum.BorderMode.Inset;
                 Size = UDim2.new(1, 0, 0, 0);
                 ZIndex = 2;
-                Parent = Info.Side == 1 and LeftSide or RightSide;
-            });
+                Parent = Info.Side == 1 and LeftSide or (Info.Side == 2 and RightSide or MiddleSide);
+});
 
             Library:AddToRegistry(BoxOuter, {
                 BackgroundColor3 = 'BackgroundColor';
@@ -3477,8 +3494,12 @@ function Library:CreateWindow(...)
             return Tab:AddTabbox({ Name = Name, Side = 1; });
         end;
 
-        function Tab:AddRightTabbox(Name)
+        function Tab:AddMiddleTabbox(Name)
             return Tab:AddTabbox({ Name = Name, Side = 2; });
+        end;
+
+        function Tab:AddRightTabbox(Name)
+            return Tab:AddTabbox({ Name = Name, Side = 3; });
         end;
 
         TabButton.InputBegan:Connect(function(Input)
