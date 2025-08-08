@@ -2948,7 +2948,7 @@ function Library:CreateWindow(...)
     if type(Config.MenuFadeTime) ~= 'number' then Config.MenuFadeTime = 0.2 end
 
     if typeof(Config.Position) ~= 'UDim2' then Config.Position = UDim2.fromOffset(175, 50) end
-    if typeof(Config.Size) ~= 'UDim2' then Config.Size = UDim2.fromOffset(550, 600) end
+    if typeof(Config.Size) ~= 'UDim2' then Config.Size = UDim2.fromOffset(825, 600) end
 
     if Config.Center then
         Config.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -3291,14 +3291,13 @@ function Library:CreateWindow(...)
             return Tab:AddGroupbox({ Side = 1; Name = Name; });
         end;
 
-        function Tab:AddRightGroupbox(Name)
+        function Tab:AddMiddleGroupbox(Name)
             return Tab:AddGroupbox({ Side = 2; Name = Name; });
         end;
 
-        function Tab:AddMiddleGroupbox(Name)
+        function Tab:AddRightGroupbox(Name)
             return Tab:AddGroupbox({ Side = 3; Name = Name; });
         end;
-
 
         function Tab:AddTabbox(Info)
             local Tabbox = {
@@ -3495,11 +3494,11 @@ function Library:CreateWindow(...)
             return Tab:AddTabbox({ Name = Name, Side = 1; });
         end;
 
-        function Tab:AddRightTabbox(Name)
+        function Tab:AddMiddleTabbox(Name)
             return Tab:AddTabbox({ Name = Name, Side = 2; });
         end;
 
-        function Tab:AddMiddleTabbox(Name)
+        function Tab:AddRightTabbox(Name)
             return Tab:AddTabbox({ Name = Name, Side = 3; });
         end;
 
