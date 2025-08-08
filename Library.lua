@@ -3634,5 +3634,3 @@ Players.PlayerRemoving:Connect(OnPlayerChange);
 
 getgenv().Library = Library
 return Library
-Tabs.AnchorPoint = Vector2.new(0.5, 0.5)
-Tabs.Position = UDim2.new(0.5, 0, 0.5, 0)
