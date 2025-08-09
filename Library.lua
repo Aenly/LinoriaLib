@@ -3118,8 +3118,8 @@ function Library:CreateWindow(...)
         local LeftSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0, 8, 0, 8),
-            Size = UDim2.new(0.3, -12, 1, -16),
+            Position = UDim2.new(0, 6, 0, 8),
+            Size = UDim2.new(0.3333, -8, 1, -16),
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
@@ -3131,8 +3131,8 @@ function Library:CreateWindow(...)
         local MiddleSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0.35, 0, 0, 8),
-            Size = UDim2.new(0.3, -12, 1, -16),
+            Position = UDim2.new(0.3333, 2, 0, 8),
+            Size = UDim2.new(0.3333, -8, 1, -16),
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
@@ -3144,8 +3144,8 @@ function Library:CreateWindow(...)
         local RightSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
             BorderSizePixel = 0;
-            Position = UDim2.new(0.7, 0, 0, 8),
-            Size = UDim2.new(0.3, -12, 1, -16),
+            Position = UDim2.new(0.6666, 2, 0, 8),
+            Size = UDim2.new(0.3333, -8, 1, -16),
             CanvasSize = UDim2.new(0, 0, 0, 0);
             BottomImage = '';
             TopImage = '';
@@ -3202,23 +3202,15 @@ function Library:CreateWindow(...)
         function Tab:AddGroupbox(Info)
             local Groupbox = {};
 
-            local parentContainer
-            if Info.Side == 1 then
-                parentContainer = LeftSide
-            elseif Info.Side == 2 then
-                parentContainer = MiddleSide
-            else
-                parentContainer = RightSide
-            end
-
             local BoxOuter = Library:Create('Frame', {
-                BackgroundColor3 = Library.BackgroundColor;
-                BorderColor3 = Library.OutlineColor;
-                BorderMode = Enum.BorderMode.Inset;
-                Size = UDim2.new(1, 0, 0, 0);
-                ZIndex = 2;
-                Parent = parentContainer
-});
+                BackgroundColor3 = Library.BackgroundColor,
+                BorderColor3 = Library.OutlineColor,
+                BorderMode = Enum.BorderMode.Inset,
+                Size = UDim2.new(1, -4, 0, 0),
+                ZIndex = 2,
+                Parent = Info.Side == 1 and LeftSide or 
+                (Info.Side == 2 and MiddleSide or RightSide)
+    })
 
             Library:AddToRegistry(BoxOuter, {
                 BackgroundColor3 = 'BackgroundColor';
@@ -3284,7 +3276,7 @@ function Library:CreateWindow(...)
                     end;
                 end;
 
-                BoxOuter.Size = UDim2.new(1, 0, 0, 20 + Size + 2 + 2);
+                BoxOuter.Size = UDim2.new(1, -4, 0, 20 + Size + 4);
             end;
 
             Groupbox.Container = Container;
